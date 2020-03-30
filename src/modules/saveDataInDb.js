@@ -1,5 +1,5 @@
-import Pet from './models/Pet';
-import User from './models/User';
+import Pet from '../models/Pet';
+import User from '../models/User';
 
 export default async function saveDataInDb(data){
     try {
