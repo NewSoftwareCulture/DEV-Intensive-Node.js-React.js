@@ -1,28 +1,29 @@
 import mongoose from 'mongoose';
 import _ from 'lodash';
-const {Schema} = mongoose;
+
+const { Schema } = mongoose;
 
 const PetSchema = new Schema({
-    type: {
-        type: String,
-        enum: ['cat', 'dog'],
-        required: true,
-    },
-    name: {
-        type: String,
-        required: true,  
-    },
-    owner: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,  
-    },
+  type: {
+    type: String,
+    enum: ['cat', 'dog'],
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
 }, {
-    timestamps: true,
+  timestamps: true,
 });
 
-PetSchema.methods.toJSON = function(){
-    return _.pick(this, ['type', 'name', 'owner']);
-}
+PetSchema.methods.toJSON = function () {
+  return _.pick(this, ['type', 'name', 'owner']);
+};
 
 export default mongoose.model('Pet', PetSchema);
